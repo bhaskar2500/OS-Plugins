@@ -8,26 +8,26 @@ $(document).ready(function(){
     var methods = {
         init : function(options) {
         },
-   zoom : function (){ 
+   zoom : function (imageID){ 
    control.zoomer =this;
    $(control.zoomer.selector).on('change',function(){
-      var image = document.getElementById('image');
+      ;
       latestZoom = zoomer.valueAsNumber;
       globalZoom=latestZoom < previousZoom?globalZoom+(latestZoom-previousZoom):globalZoom+(latestZoom-previousZoom)
       previousZoom=latestZoom;
-      image.style.webkitTransform = "scale("+globalZoom+")"+"rotate(" + globalRotate + "deg)" ;
-      image.style.transform = "scale("+globalZoom+")"+"rotate(" + globalRotate + "deg)" ;
+      document.getElementById(imageID).style.webkitTransform = "scale("+globalZoom+")"+"rotate(" + globalRotate + "deg)" ;
+      document.getElementById(imageID).style.transform = "scale("+globalZoom+")"+"rotate(" + globalRotate + "deg)" ;
       });
 },
    rotate : 
-      function () {
+      function (imageID) {
       control.rotate =this;
       $(control.rotate.selector).on('change',function(){
       latestRotate=rotator.value;
       globalRotate=globalRotate < previousRotate?globalRotate+parseInt(latestRotate-previousRotate):globalRotate+parseInt(latestRotate-previousRotate)
       previousRotate= parseInt(latestRotate);
-      document.getElementById('image').style.webkitTransform="rotate(" + globalRotate + "deg) scale("+ globalZoom +")";
-      document.getElementById('image').style.transform="rotate(" + globalRotate + "deg) scale("+ globalZoom +")";
+      document.getElementById(imageID).style.webkitTransform="rotate(" + globalRotate + "deg) scale("+ globalZoom +")";
+      document.getElementById(imageID).style.transform="rotate(" + globalRotate + "deg) scale("+ globalZoom +")";
       });
 },
     };
